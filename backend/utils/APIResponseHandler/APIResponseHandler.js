@@ -4,9 +4,9 @@ let HTTPResponseCodes = new ResponseCodes();
 class APIResponseHandler {
   handle(response, result, type) {
     let successStatus = 200;
-    if (type === 'POST') {
+    if (type === "POST") {
       successStatus = 201;
-      result = result._doc
+      result = result._doc;
     }
     if (!result.errors) {
       return response.status(successStatus).send(result);

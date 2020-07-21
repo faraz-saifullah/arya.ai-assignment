@@ -31,21 +31,18 @@ class Navbar extends Component {
               </Link>
             </>
           ) : (
-              <>
-                <Link to="/" className="navbar-item">
-                  My Images
-                </Link>
-                <Link to="/chart" className="navbar-item">
-                  My Chart
-                </Link>
-                <a
-                  className="navbar-item"
-                  onClick={this.props.context.logout}
-                >
-                  Logout
+            <>
+              <Link to="/" className="navbar-item">
+                My Images
+              </Link>
+              <Link to="/chart" className="navbar-item">
+                My Chart
+              </Link>
+              <a className="navbar-item" onClick={this.props.context.logout}>
+                Logout
               </a>
-              </>
-            )}
+            </>
+          )}
         </div>
       </nav>
     );

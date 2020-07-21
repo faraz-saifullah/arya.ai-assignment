@@ -19,7 +19,6 @@ class Register extends Component {
     };
   }
 
-
   createCognitoUser = async (username, email, password) => {
     try {
       await Auth.signUp({
@@ -43,13 +42,11 @@ class Register extends Component {
     const { username, email, password } = this.state;
     try {
       if (!validationError) {
-        this.createCognitoUser(username, email, password).then(
-          () => {
-            alert(
-              "User created successfully!\nPlease check your email for confirmation link and then Log In!"
-            );
-          }
-        );
+        this.createCognitoUser(username, email, password).then(() => {
+          alert(
+            "User created successfully!\nPlease check your email for confirmation link and then Log In!"
+          );
+        });
         this.props.history.push("/login");
       }
     } catch (error) {
@@ -128,8 +125,8 @@ class Register extends Component {
         </center>
       </Fragment>
     ) : (
-        <Redirect to="/" />
-      );
+      <Redirect to="/" />
+    );
   }
 }
 

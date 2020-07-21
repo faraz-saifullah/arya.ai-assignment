@@ -5,8 +5,8 @@ import { Auth } from "aws-amplify";
 import Context from "./Context";
 import Navbar from "./components/navbar/Navbar";
 import Register from "./components/auth/Register";
-import User from "./components/user/User"
-import Chart from "./components/chart/chart"
+import User from "./components/user/User";
+import Chart from "./components/chart/chart";
 
 export default class App extends Component {
   constructor(props) {
