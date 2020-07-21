@@ -44,7 +44,7 @@ export default class App extends Component {
   async componentDidMount() {
     Auth.currentAuthenticatedUser()
       .then((user) => {
-        if (user) this.setState({ user: user.attributes });
+        if (user) this.setState({ user: user });
       })
       .catch(() => {
         this.setState({
