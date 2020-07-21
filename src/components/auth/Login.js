@@ -88,8 +88,8 @@ class Login extends Component {
         </div>
       </Fragment>
     ) : (
-        <Redirect to="/" />
-      );
+      <Redirect to="/" />
+    );
   }
 }
 

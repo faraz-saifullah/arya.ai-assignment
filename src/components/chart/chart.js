@@ -1,21 +1,22 @@
-import React, { Fragment, Component } from 'react';
-import { Redirect } from "react-router-dom";
+import React, { Fragment, Component } from "react";
+// import { Redirect } from "react-router-dom";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Input from "@material-ui/core/Input";
-import CanvasJSReact from './assets/canvasjs.react';
+import CanvasJSReact from "./assets/canvasjs.react";
 import withContext from "../../withContext";
-import Helper from "./helper"
+import Helper from "./helper";
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 class SplineChart extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      startDate: '2017-02-01',
-      endDate: '2020-05-01',
-    }
     this.helper = new Helper();
+    this.state = {
+      startDate: "",
+      endDate: "",
+      options: {},
+    };
   }
 
   onFormInputChange = (event) => {
@@ -24,48 +25,25 @@ class SplineChart extends Component {
     });
   };
 
-  componentDidMount() {
+  updateOptions = (event) => {
+    event.preventDefault();
+    const options = this.helper.getOptions(
+      Date.parse(this.state.startDate),
+      Date.parse(this.state.endDate)
+    );
     this.setState({
-      startDate: this.helper.getBoundries().startDate,
-      endDate: this.helper.getBoundries().endDate,
-    })
+      options: options,
+    });
+  };
+
+  componentDidMount() {
+    const temp = this.helper.getInitialOptions();
+    this.setState({
+      options: temp,
+    });
   }
 
   render() {
-    const options = {
-      animationEnabled: true,
-      title: {
-        text: "Expenses Per Month"
-      },
-      axisX: {
-        valueFormatString: "MMM-YYYY",
-      },
-      axisY: {
-        title: "Expenses (in 1000 USD)",
-        prefix: "$",
-        includeZero: false
-      },
-      data: [{
-        yValueFormatString: "$#,###",
-        xValueFormatString: "MMM",
-        type: "spline",
-        dataPoints: this.helper.prepareOptions(this.state.startDate, this.state.endDate).accept
-      },
-      {
-        yValueFormatString: "$#,###",
-        xValueFormatString: "MMM",
-        type: "spline",
-        dataPoints: this.helper.prepareOptions(this.state.startDate, this.state.endDate).error
-      },
-      {
-        yValueFormatString: "$#,###",
-        xValueFormatString: "MMM",
-        type: "spline",
-        dataPoints: this.helper.prepareOptions(this.state.startDate, this.state.endDate).reject
-      }]
-    }
-
-    const { user } = this.props.context;
     return (
       <Fragment>
         <div className="hero is-primary">
@@ -97,13 +75,20 @@ class SplineChart extends Component {
             )}
             <br />
             <br />
+            <button
+              onClick={this.updateOptions}
+              type="submit"
+              className="button is-primary is-medium"
+            >
+              Update
+            </button>
           </form>
         </center>
         <br />
-        <CanvasJSChart options={options} />
+        <CanvasJSChart options={this.state.options} />
       </Fragment>
-    )
+    );
   }
 }
 
-export default withContext(SplineChart);                         
+export default withContext(SplineChart);

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 /* 
@@ -6,21 +6,21 @@ const Schema = mongoose.Schema;
     mongodb database
 */
 var ImageSchema = new Schema({
-    username: {
-        type: String,
-        required: true
-    },
-    imageName: {
-        type: String,
-        default: "none",
-        required: true
-    },
-    imageData: {
-        type: String,
-        required: true
-    }
+  username: {
+    type: String,
+    required: true,
+  },
+  imageName: {
+    type: String,
+    default: "none",
+    required: true,
+  },
+  imageData: {
+    type: String,
+    required: true,
+  },
 });
 
-var Image = mongoose.model('Image', ImageSchema);
+var Image = mongoose.model("Image", ImageSchema);
 
 module.exports = Image;
