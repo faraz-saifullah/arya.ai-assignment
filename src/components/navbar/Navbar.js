@@ -17,7 +17,7 @@ class Navbar extends Component {
         aria-label="main navigation"
       >
         <div className="navbar-brand">
-          <b className="navbar-item is-size-4 ">E-Commerce</b>
+          <b className="navbar-item is-size-4 ">Dashboard</b>
         </div>
         <div className={`navbar-menu`}>
           {!this.props.context.user ? (
@@ -31,18 +31,18 @@ class Navbar extends Component {
               </Link>
             </>
           ) : (
-            <>
-              <Link to="/" className="navbar-item">
-                My Images
+              <>
+                <Link to="/" className="navbar-item">
+                  My Images
               </Link>
-              <Link to="/chart" className="navbar-item">
-                My Chart
+                <Link to="/chart" className="navbar-item">
+                  My Chart
               </Link>
-              <a className="navbar-item" onClick={this.props.context.logout}>
-                Logout
+                <a className="navbar-item" onClick={this.props.context.logout}>
+                  Logout
               </a>
-            </>
-          )}
+              </>
+            )}
         </div>
       </nav>
     );

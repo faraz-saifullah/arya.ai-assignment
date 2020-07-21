@@ -1,11 +1,11 @@
 import React, { Fragment, Component } from "react";
-// import { Redirect } from "react-router-dom";
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import Input from "@material-ui/core/Input";
 import CanvasJSReact from "./assets/canvasjs.react";
 import withContext from "../../withContext";
 import Helper from "./helper";
+import { validateDateInput } from "./Validation"
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 class SplineChart extends Component {
@@ -16,6 +16,7 @@ class SplineChart extends Component {
       startDate: "",
       endDate: "",
       options: {},
+      error: "",
     };
   }
 
@@ -27,13 +28,20 @@ class SplineChart extends Component {
 
   updateOptions = (event) => {
     event.preventDefault();
-    const options = this.helper.getOptions(
-      Date.parse(this.state.startDate),
-      Date.parse(this.state.endDate)
-    );
-    this.setState({
-      options: options,
-    });
+    const validationError = validateDateInput(this.state.startDate, this.state.endDate);
+    if (!validationError) {
+      const options = this.helper.getOptions(
+        Date.parse(this.state.startDate),
+        Date.parse(this.state.endDate)
+      );
+      this.setState({
+        options: options,
+      });
+    } else {
+      this.setState({
+        error: validationError
+      })
+    }
   };
 
   componentDidMount() {
@@ -70,10 +78,10 @@ class SplineChart extends Component {
                 id="endDate"
               />
             </FormControl>
+            <br />
             {this.state.error && (
               <div className="has-text-danger">{this.state.error}</div>
             )}
-            <br />
             <br />
             <button
               onClick={this.updateOptions}
