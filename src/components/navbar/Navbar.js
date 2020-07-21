@@ -20,9 +20,6 @@ class Navbar extends Component {
           <b className="navbar-item is-size-4 ">E-Commerce</b>
         </div>
         <div className={`navbar-menu`}>
-          <Link to="/" className="navbar-item">
-            User
-          </Link>
           {!this.props.context.user ? (
             <>
               {/* login and register should only show when user is not logged in */}
@@ -34,14 +31,20 @@ class Navbar extends Component {
               </Link>
             </>
           ) : (
-              // Logout should only show when user is logged in
-              <a
-                href="/"
-                className="navbar-item"
-                onClick={this.props.context.logout}
-              >
-                Logout
+              <>
+                <Link to="/" className="navbar-item">
+                  My Images
+                </Link>
+                <Link to="/chart" className="navbar-item">
+                  My Chart
+                </Link>
+                <a
+                  className="navbar-item"
+                  onClick={this.props.context.logout}
+                >
+                  Logout
               </a>
+              </>
             )}
         </div>
       </nav>
