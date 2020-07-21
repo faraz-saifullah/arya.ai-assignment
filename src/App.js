@@ -6,6 +6,7 @@ import Context from "./Context";
 import Navbar from "./components/navbar/Navbar";
 import Register from "./components/auth/Register";
 import User from "./components/user/User"
+import Chart from "./components/chart/chart"
 
 export default class App extends Component {
   constructor(props) {
@@ -67,6 +68,7 @@ export default class App extends Component {
             <Navbar />
             <Switch>
               <Route exact path="/" component={User} />
+              <Route exact path="/chart" component={Chart} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
             </Switch>
