@@ -4,7 +4,7 @@ import FileBase from 'react-file-base64';
 import withContext from "../../withContext";
 import axios from "axios";
 
-const BASE_URL = 'http://localhost:5000'
+const BASE_URL = 'http://ec2-3-136-87-139.us-east-2.compute.amazonaws.com:3001'
 
 class User extends Component {
   constructor(props) {

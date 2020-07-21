@@ -8,6 +8,17 @@ export default class Helper {
     })
   }
 
+  getBoundries = () => {
+    let startDate = new Date(this.data[0].Date).toISOString();
+    let endDate = new Date(this.data[data.length - 1].Date).toISOString();
+    startDate = startDate.split('T')[0]
+    endDate = endDate.split('T')[0]
+    return {
+      startDate,
+      endDate
+    }
+  }
+
   normalize(data) {
     let accept = [];
     let reject = [];

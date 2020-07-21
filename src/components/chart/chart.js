@@ -24,6 +24,13 @@ class SplineChart extends Component {
     });
   };
 
+  componentDidMount() {
+    this.setState({
+      startDate: this.helper.getBoundries().startDate,
+      endDate: this.helper.getBoundries().endDate,
+    })
+  }
+
   render() {
     const options = {
       animationEnabled: true,
