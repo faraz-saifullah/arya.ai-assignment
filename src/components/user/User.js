@@ -20,27 +20,25 @@ class User extends Component {
   }
 
   async componentDidMount() {
-    setImmediate(async () => {
-      if (this.props.context.user) {
-        this.setState({
-          isLoading: true,
-        })
-        const { username } = this.props.context.user;
-        const resp = await axios.get(`${BASE_URL}/users/${username}/images`);
-        const uploadedImages = [];
-        resp.data.map((image) => {
-          const imageObj = {
-            name: image.imageName,
-            base64Image: image.imageData,
-          };
-          uploadedImages.push(imageObj);
-        });
-        this.setState({
-          images: uploadedImages,
-          isLoading: false,
-        });
-      }
-    });
+    if (this.props.context.user && this.props.context.user.username) {
+      this.setState({
+        isLoading: true,
+      })
+      const { username } = this.props.context.user;
+      const resp = await axios.get(`${BASE_URL}/users/${username}/images`);
+      const uploadedImages = [];
+      resp.data.map((image) => {
+        const imageObj = {
+          name: image.imageName,
+          base64Image: image.imageData,
+        };
+        uploadedImages.push(imageObj);
+      });
+      this.setState({
+        images: uploadedImages,
+        isLoading: false,
+      });
+    }
   }
 
   handleUpload = (files) => {

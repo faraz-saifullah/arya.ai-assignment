@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from "react";
 import FormControl from "@material-ui/core/FormControl";
 import { Redirect } from 'react-router-dom';
+import FormHelperText from '@material-ui/core/FormHelperText';
 import InputLabel from "@material-ui/core/InputLabel";
 import Input from "@material-ui/core/Input";
 import CanvasJSReact from "./assets/canvasjs.react";
@@ -70,6 +71,7 @@ class SplineChart extends Component {
                 onChange={this.onFormInputChange}
                 id="startDate"
               />
+              <FormHelperText id="startDate-helper-text">Format: YYYY-MM-DD eg: 2019-02-11</FormHelperText>
             </FormControl>
             <FormControl style={{ width: "25%" }}>
               <InputLabel htmlFor="endDate">End Date</InputLabel>
@@ -78,6 +80,7 @@ class SplineChart extends Component {
                 onChange={this.onFormInputChange}
                 id="endDate"
               />
+              <FormHelperText id="startDate-helper-text">Format: YYYY-MM-DD eg: 2019-02-18</FormHelperText>
             </FormControl>
             <br />
             {this.state.error && (

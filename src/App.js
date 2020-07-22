@@ -15,7 +15,6 @@ export default class App extends Component {
     this.state = {
       user: null,
     };
-
     this.routerRef = React.createRef();
   }
 
@@ -42,7 +41,7 @@ export default class App extends Component {
   //Load products fromm database on Component Mount
   //Also if any user was authenticated get his details
   //Update user and product details after finishing the async call
-  async componentDidMount() {
+  componentDidMount() {
     Auth.currentAuthenticatedUser()
       .then((user) => {
         if (user) this.setState({ user: user });
