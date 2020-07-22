@@ -1,5 +1,6 @@
 import React, { Fragment, Component } from "react";
 import FormControl from "@material-ui/core/FormControl";
+import { Redirect } from 'react-router-dom';
 import InputLabel from "@material-ui/core/InputLabel";
 import Input from "@material-ui/core/Input";
 import CanvasJSReact from "./assets/canvasjs.react";
@@ -52,7 +53,7 @@ class SplineChart extends Component {
   }
 
   render() {
-    return (
+    return this.props.context.user ? (
       <Fragment>
         <div className="hero is-primary">
           <div className="hero-body container">
@@ -95,7 +96,7 @@ class SplineChart extends Component {
         <br />
         <CanvasJSChart options={this.state.options} />
       </Fragment>
-    );
+    ) : (<Redirect to="/login" />);
   }
 }
 
