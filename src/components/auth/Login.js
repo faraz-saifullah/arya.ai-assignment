@@ -31,7 +31,7 @@ class Login extends Component {
           username,
           password,
         });
-        this.props.context.login(user.attributes);
+        this.props.context.login(user);
         this.props.history.push("/");
       }
     } catch (error) {
@@ -88,8 +88,8 @@ class Login extends Component {
         </div>
       </Fragment>
     ) : (
-      <Redirect to="/" />
-    );
+        <Redirect to="/" />
+      );
   }
 }
 
