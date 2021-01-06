@@ -8,7 +8,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "aws-amplify": "^3.0.20",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bulma": "^0.8.1",
     "multer": "^1.4.2",
     "react": "^16.13.1",
